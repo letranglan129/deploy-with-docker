@@ -1,0 +1,16 @@
+﻿services:
+  server:
+    ports:
+      - 8080:8080
+      - 8081:8081
+    environment:
+        SCHOOL_DB: "Server=ssh.letranglan.top;Database=School;User Id=sa;Password=785571@Lan;TrustServerCertificate=True"
+    image: actionTest/deploy1
+
+  server2:
+    ports:
+      - 9080:8080
+      - 9081:8081
+    environment:
+        SCHOOL_DB: "Server=ssh.letranglan.top;Database=School2;User Id=sa;Password=785571@Lan;TrustServerCertificate=True"
+    image: actionTest/deploy2

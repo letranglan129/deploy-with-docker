@@ -1,0 +1,48 @@
+﻿services:
+  server:
+    build:
+      context: .
+      target: final
+    ports:
+      - 8080:8080
+      - 8081:8081
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+    environment:
+        SCHOOL_DB: "Server=ssh.letranglan.top;Database=School;User Id=sa;Password=785571@Lan;TrustServerCertificate=True"
+    image: actionTest/deploy1
+
+  server2:
+    build:
+      context: .
+      target: final
+    ports:
+      - 9080:8080
+      - 9081:8081
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+    environment:
+        SCHOOL_DB: "Server=ssh.letranglan.top;Database=School2;User Id=sa;Password=785571@Lan;TrustServerCertificate=True"
+    image: actionTest/deploy2
+
+    # networks:
+    #   - my_network
+
+  # mssql:
+  #   container_name: sql-server
+  #   image: octopusdeploy/mssql-server-windows-express
+  #   restart: always
+  #   hostname: sql
+  #   networks:
+  #     - my_network
+  #   environment:
+  #     ACCEPT_EULA: "Y"
+  #     MSSQL_SA_PASSWORD: "785571@Lan"
+  #   ports:
+  #     - 1433:1433
+# networks:
+#   my_network:
